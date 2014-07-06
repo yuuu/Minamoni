@@ -4,10 +4,10 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 
-namespace Inamoni.Comm
+namespace Minamoni.Comm
 {
     /// <summary>
-    /// 通信方式インターフェース
+    /// 通信インターフェース
     /// </summary>
     public interface IComm
     {

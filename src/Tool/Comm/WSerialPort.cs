@@ -4,14 +4,16 @@ using System.IO.Ports;
 using System.Linq;
 using System.Text;
 
-namespace Inamoni.Comm
+namespace Minamoni.Comm
 {
     /// <summary>
     /// SerialPortクラスのラッパー
     /// </summary>
     class WSerialPort : IComm
     {
-        // SerialPortクラスの実態
+        /// <summary>
+        /// SerialPortの実体
+        /// </summary>
         private SerialPort serialPort_;
 
         // ポート一覧取得

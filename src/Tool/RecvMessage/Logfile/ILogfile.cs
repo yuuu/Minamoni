@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Inamoni.RecvMessage.Logfile
+namespace Minamoni.RecvMessage.Logfile
 {
     /// <summary>
     /// レコード構造体
@@ -24,9 +24,15 @@ namespace Inamoni.RecvMessage.Logfile
         public Int32 sMotorPWM;
     };
 
-    // ログ追加通知のデリゲート
+    /// <summary>
+    /// ログ追加通知先デリゲート
+    /// </summary>
+    /// <param name="recent"></param>
     public delegate void LogAddEventHandler(Record recent);
 
+    /// <summary>
+    /// ログファイルインターフェース
+    /// </summary>
     public interface ILogfile
     {
         /// <summary>

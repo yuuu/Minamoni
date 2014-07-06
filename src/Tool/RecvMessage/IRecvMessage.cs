@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Inamoni.RecvMessage
+namespace Minamoni.RecvMessage
 {
-    // メッセージタイプ
+    /// <summary>
+    /// メッセージタイプ
+    /// </summary>
     public enum MessageType
     {
         LOG
     };
 
     /// <summary>
-    /// 受信メッセージ
+    /// 受信メッセージインターフェース
     /// </summary>
     public interface IRecvMessage
     {

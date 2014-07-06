@@ -4,17 +4,26 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Inamoni.RecvMessage.Logfile
+namespace Minamoni.RecvMessage.Logfile
 {
+    /// <summary>
+    /// ログクラス
+    /// </summary>
     class IOLog : IRecvMessage, ILogfile
     {
-        // ログ
+        /// <summary>
+        /// ログリスト
+        /// </summary>
         private List<Record> log_;
 
-        // パス名
+        /// <summary>
+        /// パス名
+        /// </summary>
         String path_;
 
-        // ファイル名
+        /// <summary>
+        /// ファイル名
+        /// </summary>
         String fileName_;
 
         // 受信メッセージサイズ

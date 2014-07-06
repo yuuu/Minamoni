@@ -1,7 +1,7 @@
-﻿using Inamoni.Comm;
-using Inamoni.RecvMessage;
-using Inamoni.RecvMessage.Logfile;
-using Inamoni.Target;
+﻿using Minamoni.Comm;
+using Minamoni.RecvMessage;
+using Minamoni.RecvMessage.Logfile;
+using Minamoni.Target;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +13,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace Inamoni
+namespace Minamoni
 {
-    public partial class inamoniForm : Form
+
+    public partial class MinamoniForm : Form
     {
         /// <summary>
         /// グラフデータ
@@ -48,7 +49,7 @@ namespace Inamoni
         /// <summary>
         /// 初期化
         /// </summary>
-        public inamoniForm()
+        public MinamoniForm()
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
-﻿namespace Inamoni
+﻿namespace Minamoni
 {
-    partial class inamoniForm
+    partial class MinamoniForm
     {
         /// <summary>
         /// 必要なデザイナー変数です。
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(inamoniForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MinamoniForm));
             this.outputValueBox = new System.Windows.Forms.GroupBox();
             this.sMotorPWMRadioButton = new System.Windows.Forms.RadioButton();
             this.lMotorPWMRadioButton = new System.Windows.Forms.RadioButton();
@@ -499,7 +499,7 @@
             this.connectionStatusLabel.Size = new System.Drawing.Size(32, 18);
             this.connectionStatusLabel.Text = "切断";
             // 
-            // inamoniForm
+            // MinamoniForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -514,7 +514,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "inamoniForm";
+            this.Name = "MinamoniForm";
             this.Text = "ETロボコンみんなのモニタリングツール by ETロボコン関西連合";
             this.outputValueBox.ResumeLayout(false);
             this.outputValueBox.PerformLayout();

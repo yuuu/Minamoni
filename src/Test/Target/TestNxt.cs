@@ -1,4 +1,4 @@
-﻿using Inamoni.Target;
+﻿using Minamoni.Target;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

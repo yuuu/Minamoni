@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Inamoni
+namespace Minamoni
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace Inamoni
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new inamoniForm());
+            Application.Run(new MinamoniForm());
         }
     }
 }

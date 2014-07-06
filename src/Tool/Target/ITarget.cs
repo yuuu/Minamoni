@@ -1,18 +1,24 @@
-﻿using Inamoni.Comm;
+﻿using Minamoni.Comm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Inamoni.Target
+namespace Minamoni.Target
 {
-    // 接続通知のデリゲート
+    /// <summary>
+    /// 接続通知のデリゲート 
+    /// </summary>
     public delegate void ConnectEventHandler();
 
-    // 切断通知のデリゲート
+    /// <summary>
+    /// 切断通知のデリゲート
+    /// </summary>
     public delegate void DisconnectEventHandler();
 
-    // 異常通知のデリゲート
+    /// <summary>
+    /// 異常通知のデリゲート
+    /// </summary>
     public delegate void CommErrorEventHandler();
 
     /// <summary>

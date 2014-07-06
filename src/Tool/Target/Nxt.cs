@@ -1,5 +1,5 @@
-﻿using Inamoni.Comm;
-using Inamoni.RecvMessage;
+﻿using Minamoni.Comm;
+using Minamoni.RecvMessage;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -8,9 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 
-namespace Inamoni.Target
+namespace Minamoni.Target
 {
-    // 接続状態
+    /// <summary>
+    /// 接続状態
+    /// </summary>
     public enum CommStatus
     {
         INITIALIZED,
@@ -18,38 +20,57 @@ namespace Inamoni.Target
         DISCONNECTED
     };
 
+    /// <summary>
+    /// NXTクラス
+    /// </summary>
     public class Nxt : ITarget
     {
-        // データサイズ
+        /// <summary>
+        /// データサイズ
+        /// </summary>
         const int DATASIZE = 64;
 
-        // シリアルポート
+        /// <summary>
+        /// シリアルポート
+        /// </summary>
         private IComm comm_;
         public IComm comm
         {
             get { return this.comm_; }
         }
 
-        // 接続状態
+        /// <summary>
+        /// 接続状態
+        /// </summary>
         private CommStatus commStatus_;
         public CommStatus commStatus
         {
             get { return this.commStatus_; }
         }
 
-        // 排他オブジェクト
+        /// <summary>
+        /// 排他オブジェクト
+        /// </summary>
         private Object lockObject_;
 
-        // 受信メッセージ一覧オブジェクト
+        /// <summary>
+        /// 受信メッセージ一覧
+        /// </summary>
         private IRecvMessage[] recvMes_;
 
-        // 接続通知先
+        /// <summary>
+        /// 接続通知先
+        /// </summary>
         public event ConnectEventHandler connectHandler;
 
-        // 切断通知先
+        /// <summary>
+        /// 切断通知先
+        /// </summary>
         public event DisconnectEventHandler disconnectHandler;
 
-        // 異常通知先
+        /// <summary>
+        /// 異常通知先
+        /// </summary>
         public event CommErrorEventHandler errorHandler;
 
         /// <summary>
