@@ -21,7 +21,7 @@ namespace Inamoni
         /// グラフデータ
         /// </summary>
         Queue<Record?> graphData;
-        const int GRAPH_DATA_NUM = 300;
+        const int GRAPH_DATA_NUM = 2000;
 
         /// <summary>
         /// グラフ更新タイマー
@@ -36,11 +36,6 @@ namespace Inamoni
         const int LOGVALUE_UPDATE_PERIOD = 500;
 
         /// <summary>
-        /// チェック可能な要素数
-        /// </summary>
-        const int CHECKABLE_NUM = 1;
-
-        /// <summary>
         /// 接続先
         /// </summary>
         ITarget target_;
@@ -49,8 +44,6 @@ namespace Inamoni
         /// ログファイル
         /// </summary>
         ILogfile logfile_;
-
-        private int counter;
 
         /// <summary>
         /// 初期化
@@ -81,8 +74,6 @@ namespace Inamoni
                 portComboBox.Items.Add(item);
                 portComboBox.SelectedIndex = 0;
             }
-
-            counter = 0;
         }
 
         /// <summary>
