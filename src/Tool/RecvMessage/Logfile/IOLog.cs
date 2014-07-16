@@ -9,7 +9,7 @@ namespace Minamoni.RecvMessage.Logfile
     /// <summary>
     /// ログクラス
     /// </summary>
-    class IOLog : IRecvMessage, ILogfile
+    public class IOLog : IRecvMessage, ILogfile
     {
         /// <summary>
         /// ログリスト

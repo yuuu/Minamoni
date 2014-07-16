@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RecvMessage\TestIOLog.cs" />
+    <Compile Include="Target\MRecvMessage.cs" />
     <Compile Include="Target\MSerialPort.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Target\TestNxt.cs" />

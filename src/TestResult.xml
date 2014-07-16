@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\Users\yuhei\Desktop\Minamoni\src\MInamoniTest.nunit" total="15" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2014-07-16" time="22:04:31">
+  <environment nunit-version="2.6.3.13283" clr-version="2.0.50727.5477" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Users\yuhei\Desktop\Minamoni\src" machine-name="YUHEI-THINK" user="yuhei" user-domain="yuhei-THINK" />
+  <culture-info current-culture="ja-JP" current-uiculture="ja-JP" />
+  <test-suite type="Project" name="C:\Users\yuhei\Desktop\Minamoni\src\MInamoniTest.nunit" executed="True" result="Success" success="True" time="0.149" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\Users\yuhei\Desktop\Minamoni\src\Test\bin\Debug\Test.dll" executed="True" result="Success" success="True" time="0.131" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="MinamoniTest" executed="True" result="Success" success="True" time="0.131" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="RecvMessage" executed="True" result="Success" success="True" time="0.084" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="TestIOLog" executed="True" result="Success" success="True" time="0.081" asserts="0">
+                    <results>
+                      <test-case name="MinamoniTest.RecvMessage.TestIOLog.レコードが空の時に最新のレコードを取得する" executed="True" result="Success" success="True" time="0.022" asserts="0" />
+                      <test-case name="MinamoniTest.RecvMessage.TestIOLog.最新のレコードを取得する" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="MinamoniTest.RecvMessage.TestIOLog.指定したレコード数存在しない時に取得する" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="MinamoniTest.RecvMessage.TestIOLog.取得する" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                      <test-case name="MinamoniTest.RecvMessage.TestIOLog.受信する" executed="True" result="Success" success="True" time="0.028" asserts="13" />
+                      <test-case name="MinamoniTest.RecvMessage.TestIOLog.保存する" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+              <test-suite type="Namespace" name="Target" executed="True" result="Success" success="True" time="0.042" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="TestNxt" executed="True" result="Success" success="True" time="0.041" asserts="0">
+                    <results>
+                      <test-case name="MinamoniTest.Target.TestNxt.コンストラクタ" executed="True" result="Success" success="True" time="0.004" asserts="2" />
+                      <test-case name="MinamoniTest.Target.TestNxt.異常通知できる" executed="True" result="Success" success="True" time="0.003" asserts="1" />
+                      <test-case name="MinamoniTest.Target.TestNxt.受信する" executed="True" result="Success" success="True" time="0.002" asserts="3" />
+                      <test-case name="MinamoniTest.Target.TestNxt.初期化後に切断する" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="MinamoniTest.Target.TestNxt.切断通知できる" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                      <test-case name="MinamoniTest.Target.TestNxt.接続する" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                      <test-case name="MinamoniTest.Target.TestNxt.接続後に接続する" executed="True" result="Success" success="True" time="0.001" asserts="2" />
+                      <test-case name="MinamoniTest.Target.TestNxt.接続中に切断する" executed="True" result="Success" success="True" time="0.000" asserts="1" />
+                      <test-case name="MinamoniTest.Target.TestNxt.接続通知できる" executed="True" result="Success" success="True" time="0.001" asserts="1" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
