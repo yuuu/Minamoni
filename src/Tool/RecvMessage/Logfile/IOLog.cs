@@ -146,10 +146,13 @@ namespace Minamoni.RecvMessage.Logfile
         /// </summary>
         private void save_sub()
         {
+            StreamWriter stream = null;
+
             // ファイルにテキストを書き出し。
-            using (StreamWriter stream =
-                new StreamWriter(path_ + @"\" + fileName_, false, System.Text.Encoding.UTF8))
+            try
             {
+                stream = new StreamWriter(path_ + @"\" + fileName_, false, Encoding.UTF8);
+                
                 // ヘッダを出力
                 outputHeader(stream);
 
@@ -158,9 +161,18 @@ namespace Minamoni.RecvMessage.Logfile
                 {
                     outputRecord(stream, record);
                 }
-
+            }
+            catch(Exception e)
+            {
+                // 保存失敗した
+            }
+            finally
+            {
                 // クローズ
-                stream.Close();
+                if (stream != null)
+                {
+                    stream.Close();
+                }
             }
         }
 
