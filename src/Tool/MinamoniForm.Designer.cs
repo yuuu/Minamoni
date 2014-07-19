@@ -515,7 +515,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MinamoniForm";
-            this.Text = "ETロボコンみんなのモニタリングツール by ETロボコン関西連合";
+            this.Text = "Minamoni ETロボコンみんなのモニタリングツール";
             this.outputValueBox.ResumeLayout(false);
             this.outputValueBox.PerformLayout();
             this.inputValueBox.ResumeLayout(false);
