@@ -15,6 +15,7 @@
 #define BLUETOOTH_PASSKEY		"1234"
 #define BLUETOOTH_NAME			"MonitorSample"
 #define BLUETOOTH_WAIT_PERIOD	10
+#define BLUETOOTH_SEND_PERIOD	10
 
 /* ログ構造体 */
 typedef struct {
@@ -62,7 +63,24 @@ void user_1ms_isr_type2(void)
 	SignalCounter(SysTimerCnt);
 }
 
-TASK(Monitor)
+void logInit()
+{
+	send_log.command = 0;
+	send_log.size = sizeof(LOG);
+	send_log.index++;
+	send_log.time = (unsigned long)0;
+	send_log.vattery = (unsigned long)0;
+	send_log.r_motor_enc = (unsigned long)0;
+	send_log.l_moror_enc = (unsigned long)0;
+	send_log.s_motor_enc = (unsigned long)0;
+	send_log.light_sensor = (unsigned long)0;
+	send_log.gyro_sensor = (unsigned long)0;
+	send_log.r_motor_pwm = (unsigned long)0;
+	send_log.l_motor_pwm = (unsigned long)0;
+	send_log.s_motor_pwm = (unsigned long)0;
+}
+
+void waitBuluetoothConnect()
 {
 	ecrobot_set_bt_device_name(BLUETOOTH_NAME);
 
@@ -70,12 +88,17 @@ TASK(Monitor)
 	{
 		systick_wait_ms(BLUETOOTH_WAIT_PERIOD);
 	}
+}
+
+TASK(Monitor)
+{
+	logInit();
+
+	waitBuluetoothConnect();
 
 	while(1)
 	{
 		/* ログを生成する */
-		send_log.command = 0;
-		send_log.size = sizeof(LOG);
 		send_log.index++;
 		send_log.time = (unsigned long)systick_get_ms();
 		send_log.vattery = (unsigned long)ecrobot_get_battery_voltage();
@@ -91,7 +114,7 @@ TASK(Monitor)
 		/* ログを送信する */
 		ecrobot_send_bt((void*)&send_log, 0, sizeof(LOG));
 
-		systick_wait_ms(BLUETOOTH_WAIT_PERIOD);
+		systick_wait_ms(BLUETOOTH_SEND_PERIOD);
 	}
 
 	TerminateTask();
