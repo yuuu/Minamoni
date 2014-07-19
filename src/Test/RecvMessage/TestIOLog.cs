@@ -35,13 +35,15 @@ namespace MinamoniTest.RecvMessage
     class TestIOLog
     {
         String PATH = Directory.GetCurrentDirectory();
-        String FILE = @"test.csv";
+        String FILE = @"\test.csv";
 
         private IOLog log_;
         private TestData recvData;
 
         private BinaryFormatter formatter_;
         private MemoryStream mem_;
+
+        private bool addLogtNotified_;
 
         [SetUp]
         public void SetUp()
@@ -64,6 +66,8 @@ namespace MinamoniTest.RecvMessage
             recvData.rMotorPWM = 10;
             recvData.lMotorPWM = 11;
             recvData.sMotorPWM = 12;
+
+            addLogtNotified_ = false;
 
             log_ = new IOLog(PATH, FILE);
         }
@@ -103,36 +107,207 @@ namespace MinamoniTest.RecvMessage
             Assert.AreEqual(10, record.Value.rMotorPWM);
             Assert.AreEqual(11, record.Value.lMotorPWM);
             Assert.AreEqual(12, record.Value.sMotorPWM);
+
+            Assert.IsFalse(addLogtNotified_);
         }
 
         [Test]
         public void 保存する()
         {
+            String caption;
+            String record;
 
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
+
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
+
+            log_.Receive(binary);
+            log_.Save();
+
+            // csvファイルを開く
+            using (StreamReader sr = new StreamReader(PATH + FILE))
+            {
+                // ファイルから一行読み込む
+                caption = sr.ReadLine();
+                record = sr.ReadLine();
+            }
+
+            Assert.AreEqual("No., 時間, 電圧, 右モータEnc, 左モータEnc, ステアモータEnc, 光センサ, ジャイロセンサ, 超音波センサ, 右モータPWM, 左モータPWM, ステアモータPWM, ",caption);
+            Assert.AreEqual("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ",record);
         }
 
         [Test]
         public void 取得する()
         {
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
 
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
+
+            log_.Receive(binary);
+            log_.Receive(binary);
+            log_.Receive(binary);
+            log_.Receive(binary);
+
+            List<Record> list = log_.GetRecoad(4);
+
+            Assert.AreEqual(4, list.Count);
+
+            foreach (Record record in list)
+            {
+                Assert.AreEqual(1, record.index);
+                Assert.AreEqual(2, record.time);
+                Assert.AreEqual(3, record.vattery);
+                Assert.AreEqual(4, record.rMotorEnc);
+                Assert.AreEqual(5, record.lMotorEnc);
+                Assert.AreEqual(6, record.sMotorEnc);
+                Assert.AreEqual(7, record.lightSensor);
+                Assert.AreEqual(8, record.gyroSensor);
+                Assert.AreEqual(9, record.sonarSensor);
+                Assert.AreEqual(10, record.rMotorPWM);
+                Assert.AreEqual(11, record.lMotorPWM);
+                Assert.AreEqual(12, record.sMotorPWM);
+            }
         }
 
         [Test]
         public void 指定したレコード数存在しない時に取得する()
         {
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
 
-        }
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
 
-        [Test]
-        public void 最新のレコードを取得する()
-        {
+            log_.Receive(binary);
+            log_.Receive(binary);
+            log_.Receive(binary);
+            log_.Receive(binary);
 
+            List<Record> list = log_.GetRecoad(5);
+
+            Assert.AreEqual(4, list.Count);
+
+            foreach (Record record in list)
+            {
+                Assert.AreEqual(1, record.index);
+                Assert.AreEqual(2, record.time);
+                Assert.AreEqual(3, record.vattery);
+                Assert.AreEqual(4, record.rMotorEnc);
+                Assert.AreEqual(5, record.lMotorEnc);
+                Assert.AreEqual(6, record.sMotorEnc);
+                Assert.AreEqual(7, record.lightSensor);
+                Assert.AreEqual(8, record.gyroSensor);
+                Assert.AreEqual(9, record.sonarSensor);
+                Assert.AreEqual(10, record.rMotorPWM);
+                Assert.AreEqual(11, record.lMotorPWM);
+                Assert.AreEqual(12, record.sMotorPWM);
+            }
         }
 
         [Test]
         public void レコードが空の時に最新のレコードを取得する()
         {
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
 
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
+
+            Record? record = log_.GetRecentRecord();
+
+            Assert.IsNull(record);
+        }
+
+        [Test]
+        public void 異なる種類のデータを受信する()
+        {
+            recvData.type = (UInt32)MessageType.LOG + 1;
+
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
+
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
+
+            log_.Receive(binary);
+            Record? record = log_.GetRecentRecord();
+
+            Assert.IsNull(record);
+        }
+
+        [Test]
+        public void 異なるサイズのデータを受信する()
+        {
+            recvData.size++;
+
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
+
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
+
+            log_.Receive(binary);
+            Record? record = log_.GetRecentRecord();
+
+            Assert.IsNull(record);
+        }
+
+        [Test]
+        public void ログ追加通知できる()
+        {
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
+
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
+
+            log_.logAddHandler += new LogAddEventHandler(ログ追加通知先);
+            log_.Receive(binary);
+
+            Assert.IsTrue(addLogtNotified_);
+        }
+
+        private void ログ追加通知先(Record record)
+        {
+            addLogtNotified_ = true;
+
+            Assert.AreEqual(1, record.index);
+            Assert.AreEqual(2, record.time);
+            Assert.AreEqual(3, record.vattery);
+            Assert.AreEqual(4, record.rMotorEnc);
+            Assert.AreEqual(5, record.lMotorEnc);
+            Assert.AreEqual(6, record.sMotorEnc);
+            Assert.AreEqual(7, record.lightSensor);
+            Assert.AreEqual(8, record.gyroSensor);
+            Assert.AreEqual(9, record.sonarSensor);
+            Assert.AreEqual(10, record.rMotorPWM);
+            Assert.AreEqual(11, record.lMotorPWM);
+            Assert.AreEqual(12, record.sMotorPWM);
         }
     }
 }

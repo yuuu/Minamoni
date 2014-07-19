@@ -19,19 +19,19 @@ namespace Minamoni
     public partial class MinamoniForm : Form
     {
         /// <summary>
-        /// グラフデータ
+        /// グラフデータ数
         /// </summary>
         Queue<Record?> graphData;
         const int GRAPH_DATA_NUM = 2000;
 
         /// <summary>
-        /// グラフ更新タイマー
+        /// グラフ更新タイマー[ms]
         /// </summary>
         private Timer graphTimer;
         const int GRAPH_UPDATE_PERIOD = 100;
 
         /// <summary>
-        /// ログ値更新タイマー
+        /// ログ値更新タイマー[ms]
         /// </summary>
         private Timer logvalueTimer;
         const int LOGVALUE_UPDATE_PERIOD = 500;
