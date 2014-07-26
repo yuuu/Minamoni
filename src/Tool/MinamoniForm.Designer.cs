@@ -31,7 +31,6 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MinamoniForm));
-            this.outputValueBox = new System.Windows.Forms.GroupBox();
             this.sMotorPWMRadioButton = new System.Windows.Forms.RadioButton();
             this.lMotorPWMRadioButton = new System.Windows.Forms.RadioButton();
             this.rMotorPWMRadioButton = new System.Windows.Forms.RadioButton();
@@ -72,7 +71,6 @@
             this.eventLog1 = new System.Diagnostics.EventLog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connectionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.outputValueBox.SuspendLayout();
             this.inputValueBox.SuspendLayout();
             this.logfileBox.SuspendLayout();
             this.graphBox.SuspendLayout();
@@ -82,25 +80,10 @@
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // outputValueBox
-            // 
-            this.outputValueBox.Controls.Add(this.sMotorPWMRadioButton);
-            this.outputValueBox.Controls.Add(this.lMotorPWMRadioButton);
-            this.outputValueBox.Controls.Add(this.rMotorPWMRadioButton);
-            this.outputValueBox.Controls.Add(this.sMotorPWMTextBox);
-            this.outputValueBox.Controls.Add(this.lMotorPWMTextBox);
-            this.outputValueBox.Controls.Add(this.rMotorPWMTextBox);
-            this.outputValueBox.Location = new System.Drawing.Point(12, 327);
-            this.outputValueBox.Name = "outputValueBox";
-            this.outputValueBox.Size = new System.Drawing.Size(197, 200);
-            this.outputValueBox.TabIndex = 2;
-            this.outputValueBox.TabStop = false;
-            this.outputValueBox.Text = "出力値";
-            // 
             // sMotorPWMRadioButton
             // 
             this.sMotorPWMRadioButton.AutoSize = true;
-            this.sMotorPWMRadioButton.Location = new System.Drawing.Point(10, 70);
+            this.sMotorPWMRadioButton.Location = new System.Drawing.Point(10, 271);
             this.sMotorPWMRadioButton.Name = "sMotorPWMRadioButton";
             this.sMotorPWMRadioButton.Size = new System.Drawing.Size(102, 16);
             this.sMotorPWMRadioButton.TabIndex = 8;
@@ -111,7 +94,7 @@
             // lMotorPWMRadioButton
             // 
             this.lMotorPWMRadioButton.AutoSize = true;
-            this.lMotorPWMRadioButton.Location = new System.Drawing.Point(10, 45);
+            this.lMotorPWMRadioButton.Location = new System.Drawing.Point(10, 246);
             this.lMotorPWMRadioButton.Name = "lMotorPWMRadioButton";
             this.lMotorPWMRadioButton.Size = new System.Drawing.Size(87, 16);
             this.lMotorPWMRadioButton.TabIndex = 7;
@@ -122,7 +105,7 @@
             // rMotorPWMRadioButton
             // 
             this.rMotorPWMRadioButton.AutoSize = true;
-            this.rMotorPWMRadioButton.Location = new System.Drawing.Point(10, 20);
+            this.rMotorPWMRadioButton.Location = new System.Drawing.Point(10, 221);
             this.rMotorPWMRadioButton.Name = "rMotorPWMRadioButton";
             this.rMotorPWMRadioButton.Size = new System.Drawing.Size(87, 16);
             this.rMotorPWMRadioButton.TabIndex = 6;
@@ -133,7 +116,7 @@
             // sMotorPWMTextBox
             // 
             this.sMotorPWMTextBox.Enabled = false;
-            this.sMotorPWMTextBox.Location = new System.Drawing.Point(126, 69);
+            this.sMotorPWMTextBox.Location = new System.Drawing.Point(126, 270);
             this.sMotorPWMTextBox.Name = "sMotorPWMTextBox";
             this.sMotorPWMTextBox.Size = new System.Drawing.Size(65, 19);
             this.sMotorPWMTextBox.TabIndex = 5;
@@ -141,7 +124,7 @@
             // lMotorPWMTextBox
             // 
             this.lMotorPWMTextBox.Enabled = false;
-            this.lMotorPWMTextBox.Location = new System.Drawing.Point(126, 44);
+            this.lMotorPWMTextBox.Location = new System.Drawing.Point(126, 245);
             this.lMotorPWMTextBox.Name = "lMotorPWMTextBox";
             this.lMotorPWMTextBox.Size = new System.Drawing.Size(65, 19);
             this.lMotorPWMTextBox.TabIndex = 4;
@@ -149,16 +132,22 @@
             // rMotorPWMTextBox
             // 
             this.rMotorPWMTextBox.Enabled = false;
-            this.rMotorPWMTextBox.Location = new System.Drawing.Point(126, 19);
+            this.rMotorPWMTextBox.Location = new System.Drawing.Point(126, 220);
             this.rMotorPWMTextBox.Name = "rMotorPWMTextBox";
             this.rMotorPWMTextBox.Size = new System.Drawing.Size(65, 19);
             this.rMotorPWMTextBox.TabIndex = 3;
             // 
             // inputValueBox
             // 
+            this.inputValueBox.Controls.Add(this.sMotorPWMRadioButton);
             this.inputValueBox.Controls.Add(this.sonarSensorRadioButton);
+            this.inputValueBox.Controls.Add(this.lMotorPWMRadioButton);
             this.inputValueBox.Controls.Add(this.gyroSensorRadioButton);
+            this.inputValueBox.Controls.Add(this.sMotorPWMTextBox);
+            this.inputValueBox.Controls.Add(this.rMotorPWMRadioButton);
+            this.inputValueBox.Controls.Add(this.lMotorPWMTextBox);
             this.inputValueBox.Controls.Add(this.lightSensorRadioButton);
+            this.inputValueBox.Controls.Add(this.rMotorPWMTextBox);
             this.inputValueBox.Controls.Add(this.sMotorEncRadioButton);
             this.inputValueBox.Controls.Add(this.lMotorEncRadioButton);
             this.inputValueBox.Controls.Add(this.rMotorEncRadioButton);
@@ -174,10 +163,10 @@
             this.inputValueBox.Controls.Add(this.timeTextBox);
             this.inputValueBox.Location = new System.Drawing.Point(12, 96);
             this.inputValueBox.Name = "inputValueBox";
-            this.inputValueBox.Size = new System.Drawing.Size(197, 225);
+            this.inputValueBox.Size = new System.Drawing.Size(197, 431);
             this.inputValueBox.TabIndex = 1;
             this.inputValueBox.TabStop = false;
-            this.inputValueBox.Text = "入力値";
+            this.inputValueBox.Text = "入出力値";
             // 
             // sonarSensorRadioButton
             // 
@@ -508,7 +497,6 @@
             this.Controls.Add(this.graphBox);
             this.Controls.Add(this.connectBox);
             this.Controls.Add(this.logfileBox);
-            this.Controls.Add(this.outputValueBox);
             this.Controls.Add(this.inputValueBox);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -516,8 +504,6 @@
             this.MaximizeBox = false;
             this.Name = "MinamoniForm";
             this.Text = "Minamoni ETロボコンみんなのモニタリングツール";
-            this.outputValueBox.ResumeLayout(false);
-            this.outputValueBox.PerformLayout();
             this.inputValueBox.ResumeLayout(false);
             this.inputValueBox.PerformLayout();
             this.logfileBox.ResumeLayout(false);
@@ -536,7 +522,6 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox outputValueBox;
         private System.Windows.Forms.GroupBox inputValueBox;
         private System.Windows.Forms.TextBox sonarSensorTextBox;
         private System.Windows.Forms.TextBox gyroSensorTextBox;
