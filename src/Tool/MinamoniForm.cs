@@ -174,6 +174,7 @@ namespace Minamoni
                 portComboBox.Enabled = false;
                 fileNameTextBox.Enabled = false;
                 dirPathRefButton.Enabled = false;
+                dirOpenButton.Enabled = false;
 
                 // 更新タイマーを開始する
                 graphTimer.Start();
@@ -218,6 +219,7 @@ namespace Minamoni
                 portComboBox.Enabled = false;
                 fileNameTextBox.Enabled = false;
                 dirPathRefButton.Enabled = false;
+                dirOpenButton.Enabled = false;
             });
         }
 
@@ -258,6 +260,7 @@ namespace Minamoni
                 portComboBox.Enabled = true;
                 fileNameTextBox.Enabled = true;
                 dirPathRefButton.Enabled = true;
+                dirOpenButton.Enabled = true;
 
                 // ログファイルを保存する
                 logfile_.Save();
