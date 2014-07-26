@@ -45,6 +45,18 @@ namespace Minamoni.RecvMessage.Logfile
         }
 
         /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public IOLog(String path, String fileName, String fileNameEx)
+        {
+            String baseName = null;
+            log_ = new List<Record>();
+            baseName = Path.GetFileNameWithoutExtension(fileName);
+            fileName_ = baseName + "_" + fileNameEx + ".csv";
+            path_ = path;
+        }
+
+        /// <summary>
         /// 受信する
         /// </summary>
         /// <param name="data"></param>

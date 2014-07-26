@@ -142,6 +142,38 @@ namespace MinamoniTest.RecvMessage
         }
 
         [Test]
+        public void ファイル名を拡張して保存する()
+        {
+            String caption;
+            String record;
+            String fileNameEx = "aaa";
+
+            int size = Marshal.SizeOf(typeof(TestData));
+            byte[] binary = new byte[size];
+            IntPtr ptr;
+
+            ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(recvData, ptr, false);
+            Marshal.Copy(ptr, binary, 0, size);
+            Marshal.FreeHGlobal(ptr);
+
+            log_ = new IOLog(PATH, FILE, fileNameEx);
+            log_.Receive(binary);
+            log_.Save();
+
+            // csvファイルを開く
+            using (StreamReader sr = new StreamReader(PATH + @"\" + Path.GetFileNameWithoutExtension(FILE) + "_" + fileNameEx + ".csv"))
+            {
+                // ファイルから一行読み込む
+                caption = sr.ReadLine();
+                record = sr.ReadLine();
+            }
+
+            Assert.AreEqual("No., 時間, 電圧, 右モータEnc, 左モータEnc, ステアモータEnc, 光センサ, ジャイロセンサ, 超音波センサ, 右モータPWM, 左モータPWM, ステアモータPWM, ", caption);
+            Assert.AreEqual("1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, ", record);
+        }
+
+        [Test]
         public void 取得する()
         {
             int size = Marshal.SizeOf(typeof(TestData));

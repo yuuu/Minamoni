@@ -55,6 +55,7 @@
             this.vatteryTextBox = new System.Windows.Forms.TextBox();
             this.timeTextBox = new System.Windows.Forms.TextBox();
             this.logfileBox = new System.Windows.Forms.GroupBox();
+            this.dirOpenButton = new System.Windows.Forms.Button();
             this.dirPathRefButton = new System.Windows.Forms.Button();
             this.fileNameTextBox = new System.Windows.Forms.TextBox();
             this.dirPathTextBox = new System.Windows.Forms.TextBox();
@@ -71,7 +72,7 @@
             this.eventLog1 = new System.Diagnostics.EventLog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connectionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.dirOpenButton = new System.Windows.Forms.Button();
+            this.fileNameAddTimeCheckBox = new System.Windows.Forms.CheckBox();
             this.inputValueBox.SuspendLayout();
             this.logfileBox.SuspendLayout();
             this.graphBox.SuspendLayout();
@@ -317,6 +318,7 @@
             // 
             // logfileBox
             // 
+            this.logfileBox.Controls.Add(this.fileNameAddTimeCheckBox);
             this.logfileBox.Controls.Add(this.dirOpenButton);
             this.logfileBox.Controls.Add(this.dirPathRefButton);
             this.logfileBox.Controls.Add(this.fileNameTextBox);
@@ -329,6 +331,16 @@
             this.logfileBox.TabIndex = 4;
             this.logfileBox.TabStop = false;
             this.logfileBox.Text = "ログファイル";
+            // 
+            // dirOpenButton
+            // 
+            this.dirOpenButton.Location = new System.Drawing.Point(484, 16);
+            this.dirOpenButton.Name = "dirOpenButton";
+            this.dirOpenButton.Size = new System.Drawing.Size(75, 23);
+            this.dirOpenButton.TabIndex = 5;
+            this.dirOpenButton.Text = "開く";
+            this.dirOpenButton.UseVisualStyleBackColor = true;
+            this.dirOpenButton.Click += new System.EventHandler(this.dirOpenButton_Click);
             // 
             // dirPathRefButton
             // 
@@ -344,7 +356,7 @@
             // 
             this.fileNameTextBox.Location = new System.Drawing.Point(63, 47);
             this.fileNameTextBox.Name = "fileNameTextBox";
-            this.fileNameTextBox.Size = new System.Drawing.Size(334, 19);
+            this.fileNameTextBox.Size = new System.Drawing.Size(311, 19);
             this.fileNameTextBox.TabIndex = 3;
             this.fileNameTextBox.Text = "Log.csv";
             // 
@@ -490,15 +502,17 @@
             this.connectionStatusLabel.Size = new System.Drawing.Size(32, 18);
             this.connectionStatusLabel.Text = "切断";
             // 
-            // dirOpenButton
+            // fileNameAddTimeCheckBox
             // 
-            this.dirOpenButton.Location = new System.Drawing.Point(484, 16);
-            this.dirOpenButton.Name = "dirOpenButton";
-            this.dirOpenButton.Size = new System.Drawing.Size(75, 23);
-            this.dirOpenButton.TabIndex = 5;
-            this.dirOpenButton.Text = "開く";
-            this.dirOpenButton.UseVisualStyleBackColor = true;
-            this.dirOpenButton.Click += new System.EventHandler(this.dirOpenButton_Click);
+            this.fileNameAddTimeCheckBox.AutoSize = true;
+            this.fileNameAddTimeCheckBox.Checked = true;
+            this.fileNameAddTimeCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.fileNameAddTimeCheckBox.Location = new System.Drawing.Point(380, 49);
+            this.fileNameAddTimeCheckBox.Name = "fileNameAddTimeCheckBox";
+            this.fileNameAddTimeCheckBox.Size = new System.Drawing.Size(179, 16);
+            this.fileNameAddTimeCheckBox.TabIndex = 6;
+            this.fileNameAddTimeCheckBox.Text = "ファイル名に接続時刻を付与する";
+            this.fileNameAddTimeCheckBox.UseVisualStyleBackColor = true;
             // 
             // MinamoniForm
             // 
@@ -575,6 +589,7 @@
         private System.Windows.Forms.RadioButton lMotorEncRadioButton;
         private System.Windows.Forms.RadioButton rMotorEncRadioButton;
         private System.Windows.Forms.Button dirOpenButton;
+        private System.Windows.Forms.CheckBox fileNameAddTimeCheckBox;
 
     }
 }

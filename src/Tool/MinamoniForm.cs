@@ -104,7 +104,16 @@ namespace Minamoni
             Application.DoEvents();
 
             // ログファイルを生成
-            IOLog ioLog = new IOLog(dirPathTextBox.Text, fileNameTextBox.Text);
+            IOLog ioLog = null;
+            if (fileNameAddTimeCheckBox.Checked)
+            {
+                ioLog = new IOLog(dirPathTextBox.Text, fileNameTextBox.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
+            }
+            else
+            {
+                ioLog = new IOLog(dirPathTextBox.Text, fileNameTextBox.Text);
+            }
+
             List<IRecvMessage> recvMessageList = new List<IRecvMessage>();
             recvMessageList.Add(ioLog);
             logfile_ = ioLog;
