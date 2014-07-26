@@ -362,5 +362,15 @@ namespace Minamoni
                 if (sMotorPWMRadioButton.Checked) { series.Points.Add(new DataPoint(0, record.Value.sMotorPWM)); }
             }
         }
+
+        /// <summary>
+        /// フォルダを開く
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dirOpenButton_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("EXPLORER.EXE", dirPathTextBox.Text);
+        }
     }
 }

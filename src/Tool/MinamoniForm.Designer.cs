@@ -71,6 +71,7 @@
             this.eventLog1 = new System.Diagnostics.EventLog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connectionStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.dirOpenButton = new System.Windows.Forms.Button();
             this.inputValueBox.SuspendLayout();
             this.logfileBox.SuspendLayout();
             this.graphBox.SuspendLayout();
@@ -316,6 +317,7 @@
             // 
             // logfileBox
             // 
+            this.logfileBox.Controls.Add(this.dirOpenButton);
             this.logfileBox.Controls.Add(this.dirPathRefButton);
             this.logfileBox.Controls.Add(this.fileNameTextBox);
             this.logfileBox.Controls.Add(this.dirPathTextBox);
@@ -330,7 +332,7 @@
             // 
             // dirPathRefButton
             // 
-            this.dirPathRefButton.Location = new System.Drawing.Point(484, 17);
+            this.dirPathRefButton.Location = new System.Drawing.Point(403, 16);
             this.dirPathRefButton.Name = "dirPathRefButton";
             this.dirPathRefButton.Size = new System.Drawing.Size(75, 23);
             this.dirPathRefButton.TabIndex = 4;
@@ -342,7 +344,7 @@
             // 
             this.fileNameTextBox.Location = new System.Drawing.Point(63, 47);
             this.fileNameTextBox.Name = "fileNameTextBox";
-            this.fileNameTextBox.Size = new System.Drawing.Size(415, 19);
+            this.fileNameTextBox.Size = new System.Drawing.Size(334, 19);
             this.fileNameTextBox.TabIndex = 3;
             this.fileNameTextBox.Text = "Log.csv";
             // 
@@ -351,7 +353,7 @@
             this.dirPathTextBox.Location = new System.Drawing.Point(63, 18);
             this.dirPathTextBox.Name = "dirPathTextBox";
             this.dirPathTextBox.ReadOnly = true;
-            this.dirPathTextBox.Size = new System.Drawing.Size(415, 19);
+            this.dirPathTextBox.Size = new System.Drawing.Size(334, 19);
             this.dirPathTextBox.TabIndex = 2;
             // 
             // fileNameLabel
@@ -488,6 +490,16 @@
             this.connectionStatusLabel.Size = new System.Drawing.Size(32, 18);
             this.connectionStatusLabel.Text = "切断";
             // 
+            // dirOpenButton
+            // 
+            this.dirOpenButton.Location = new System.Drawing.Point(484, 16);
+            this.dirOpenButton.Name = "dirOpenButton";
+            this.dirOpenButton.Size = new System.Drawing.Size(75, 23);
+            this.dirOpenButton.TabIndex = 5;
+            this.dirOpenButton.Text = "開く";
+            this.dirOpenButton.UseVisualStyleBackColor = true;
+            this.dirOpenButton.Click += new System.EventHandler(this.dirOpenButton_Click);
+            // 
             // MinamoniForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -562,6 +574,7 @@
         private System.Windows.Forms.RadioButton sMotorEncRadioButton;
         private System.Windows.Forms.RadioButton lMotorEncRadioButton;
         private System.Windows.Forms.RadioButton rMotorEncRadioButton;
+        private System.Windows.Forms.Button dirOpenButton;
 
     }
 }
