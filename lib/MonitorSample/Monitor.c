@@ -67,7 +67,7 @@ void logInit()
 {
 	send_log.command = 0;
 	send_log.size = sizeof(LOG);
-	send_log.index++;
+	send_log.index = (unsigned long)0;
 	send_log.time = (unsigned long)0;
 	send_log.vattery = (unsigned long)0;
 	send_log.r_motor_enc = (unsigned long)0;
@@ -75,6 +75,7 @@ void logInit()
 	send_log.s_motor_enc = (unsigned long)0;
 	send_log.light_sensor = (unsigned long)0;
 	send_log.gyro_sensor = (unsigned long)0;
+	send_log.sonar_sensor = (unsigned long)0;
 	send_log.r_motor_pwm = (unsigned long)0;
 	send_log.l_motor_pwm = (unsigned long)0;
 	send_log.s_motor_pwm = (unsigned long)0;
