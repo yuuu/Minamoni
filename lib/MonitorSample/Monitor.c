@@ -13,7 +13,7 @@
 
 /* Bluetooth Configuration */
 #define BLUETOOTH_PASSKEY		"1234"
-#define BLUETOOTH_NAME			"MonitorSample"
+#define BLUETOOTH_NAME			"SAMPLE"
 #define BLUETOOTH_WAIT_PERIOD	10
 #define BLUETOOTH_SEND_PERIOD	10
 
